@@ -26,7 +26,7 @@ def upload():
             filename = os.path.join(app.config['UPLOAD_FOLDER'], "%s.%s" % (now.strftime("%Y-%m-%d-%H-%M-%S-%f"), file.filename.rsplit('.', 1)[1]))
             file.save(filename)
 
-            url = 'http://estella.gachon.ac.kr:8000/predict'
+            url = 'http://104.155.158.24:8000/predict'
             files = {'file': open(filename, 'rb')}
 
             r = requests.post(url, files=files)
@@ -40,4 +40,4 @@ def allowed_file(filename):
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(host='0.0.0.0', port="80", debug=True)
